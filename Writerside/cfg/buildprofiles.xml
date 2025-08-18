@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <algolia-id>6LK5RYGJ3W</algolia-id>
+        <algolia-index>writerside</algolia-index>
+        <algolia-api-key>96ddf6921d04d65365e6cfcfae3aacb2</algolia-api-key>
+        <primary-color>#df2477</primary-color>
+        <header-logo>writerside.svg</header-logo>
+        <custom-favicons>favicon.ico</custom-favicons>
+    </variables>
+    <build-profile instance="writerside">
+        <variables>
+            <noindex-content>false</noindex-content>
+            <color-preset>soft</color-preset>
+            <content-max-width>1400</content-max-width>
+            <link-color>#df2477</link-color>
+        </variables>
+    </build-profile>
+
+</buildprofiles>

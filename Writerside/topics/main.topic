@@ -1,0 +1,23 @@
+<topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       title="主页" id="main">
+
+    <section-starting-page>
+        <title>Writerside</title>
+        <description>Writerside 技术指导文档</description>
+        <spotlight>
+            <a href="introduction.md"
+               summary="介绍Writerside相关内容" type="start"/>
+            <a href="install.md"
+               summary="介绍Writerside的构建、安装方式" type="tools"/>
+        </spotlight>
+
+        <misc>
+            <cards>
+                <title>使用</title>
+                <a href="grammar.md"
+                   summary="Writerside相关语法" type="development"/>
+            </cards>
+        </misc>
+    </section-starting-page>
+</topic>

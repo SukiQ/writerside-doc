@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="67f4531e">
+        <description>Created after removal of "更新短信模板" from Writerside</description>
+        <accepts>更新短信模板.html</accepts>
+    </rule>
+    <rule id="2af9db80">
+        <description>Created after removal of "分页查询短信记录" from Writerside</description>
+        <accepts>分页查询短信记录.html</accepts>
+    </rule>
+    <rule id="3486b06a">
+        <description>Created after removal of "删除短信记录" from Writerside</description>
+        <accepts>删除短信记录.html</accepts>
+    </rule>
+    <rule id="14fa0571">
+        <description>Created after removal of "根据主键查询短信记录" from Writerside</description>
+        <accepts>根据主键查询短信记录.html</accepts>
+    </rule>
+    <rule id="2dc07e9c">
+        <description>Created after removal of "分页查询短信签名管理" from Writerside</description>
+        <accepts>分页查询短信签名管理.html</accepts>
+    </rule>
+    <rule id="3fb13235">
+        <description>Created after removal of "分页查询短信发送通知" from Writerside</description>
+        <accepts>分页查询短信发送通知.html</accepts>
+    </rule>
+    <rule id="60b16c5">
+        <description>Created after removal of "删除短信发送通知" from Writerside</description>
+        <accepts>删除短信发送通知.html</accepts>
+    </rule>
+    <rule id="28f298ea">
+        <description>Created after removal of "根据主键查询短信发送通知" from Writerside</description>
+        <accepts>根据主键查询短信发送通知.html</accepts>
+    </rule>
+    <rule id="49307b0">
+        <description>Created after removal of "插入短信发送草稿" from Writerside</description>
+        <accepts>插入短信发送草稿.html</accepts>
+    </rule>
+    <rule id="790e5ccd">
+        <description>Created after removal of "更新短信发送草稿" from Writerside</description>
+        <accepts>更新短信发送草稿.html</accepts>
+    </rule>
+    <rule id="5585aaf6">
+        <description>Created after removal of "插入短信发送通知" from Writerside</description>
+        <accepts>插入短信发送通知.html</accepts>
+    </rule>
+    <rule id="791a8e76">
+        <description>Created after removal of "更新短信发送通知" from Writerside</description>
+        <accepts>更新短信发送通知.html</accepts>
+    </rule>
+    <rule id="6d091122">
+        <description>Created after removal of "获取所有Email管理信息" from Writerside</description>
+        <accepts>获取所有Email管理信息.html</accepts>
+    </rule>
+    <rule id="20555c67">
+        <description>Created after removal of "delete" from Writerside</description>
+        <accepts>delete.html</accepts>
+    </rule>
+    <rule id="16148c18">
+        <description>Created after removal of "update" from Writerside</description>
+        <accepts>update.html</accepts>
+    </rule>
+    <rule id="39fc00f1">
+        <description>Created after removal of "desc" from Writerside</description>
+        <accepts>desc.html</accepts>
+    </rule>
+    <rule id="573d2f17">
+        <description>Created after removal of "add" from Writerside</description>
+        <accepts>add.html</accepts>
+    </rule>
+    <rule id="feaccc3">
+        <description>Created after removal of "发送短信通知" from Writerside</description>
+        <accepts>发送短信通知.html</accepts>
+    </rule>
+    <rule id="1bcc6a71">
+        <description>Created after removal of "API Reference" from Writerside</description>
+        <accepts>API_Reference.html</accepts>
+    </rule>
+    <rule id="c0a7664">
+        <description>Created after removal of "file" from Writerside</description>
+        <accepts>file.html</accepts>
+    </rule>
+</rules>

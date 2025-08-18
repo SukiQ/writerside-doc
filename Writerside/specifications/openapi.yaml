@@ -1,0 +1,2524 @@
+openapi: "3.0.1"
+info:
+  title: "API Documentation"
+  version: "1.0"
+paths:
+  /notice/send:
+    post:
+      summary: "发送短信通知"
+      description: "发送短信通知"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "phone"
+              - "templateCode"
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "通知ID"
+                  format: "int64"
+                content:
+                  type: "string"
+                  description: "通知内容"
+                templateCode:
+                  type: "string"
+                  description: "模板编码"
+                phone:
+                  type: "string"
+                  description: "电话号码"
+                templateParam:
+                  type: "object"
+                  properties:
+                    key:
+                      type: "object"
+                      properties: {}
+                  description: "模板参数"
+              description: "通知内容"
+      responses:
+        "200":
+          description: "发送返回结果"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  bizId:
+                    type: "string"
+                    description: "回执ID"
+                description: "发送返回结果"
+  /emailMgr/add:
+    post:
+      summary: "add"
+      description: "add"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                host:
+                  type: "string"
+                  description: "服务主机地址"
+                port:
+                  type: "integer"
+                  description: "服务主机端口"
+                address:
+                  type: "string"
+                  description: "邮箱地址"
+                password:
+                  type: "string"
+                  description: "邮箱密码"
+                protocol:
+                  type: "string"
+                  description: "{smtp=smtp协议, pop3=pop3协议}"
+                  enum:
+                  - "smtp"
+                  - "pop3"
+                ssl:
+                  type: "boolean"
+                  description: "是否使用SSL"
+                sslPort:
+                  type: "integer"
+                  description: "SSL端口"
+                valid:
+                  type: "boolean"
+                  description: "是否可用"
+                createTime:
+                  type: "string"
+                  description: "创建时间"
+              description: ""
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: "integer"
+  /emailMgr/{id}:
+    get:
+      summary: "desc"
+      description: "desc"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: ""
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                    description: "主键ID"
+                    format: "int64"
+                  host:
+                    type: "string"
+                    description: "服务主机地址"
+                  port:
+                    type: "integer"
+                    description: "服务主机端口"
+                  address:
+                    type: "string"
+                    description: "邮箱地址"
+                  password:
+                    type: "string"
+                    description: "邮箱密码"
+                  protocol:
+                    type: "string"
+                    description: "{smtp=smtp协议, pop3=pop3协议}"
+                    enum:
+                    - "smtp"
+                    - "pop3"
+                  ssl:
+                    type: "boolean"
+                    description: "是否使用SSL"
+                  sslPort:
+                    type: "integer"
+                    description: "SSL端口"
+                  valid:
+                    type: "boolean"
+                    description: "是否可用"
+                  createTime:
+                    type: "string"
+                    description: "创建时间"
+    put:
+      summary: "update"
+      description: "update"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: ""
+        required: true
+        schema:
+          type: "integer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                host:
+                  type: "string"
+                  description: "服务主机地址"
+                port:
+                  type: "integer"
+                  description: "服务主机端口"
+                address:
+                  type: "string"
+                  description: "邮箱地址"
+                password:
+                  type: "string"
+                  description: "邮箱密码"
+                protocol:
+                  type: "string"
+                  description: "{smtp=smtp协议, pop3=pop3协议}"
+                  enum:
+                  - "smtp"
+                  - "pop3"
+                ssl:
+                  type: "boolean"
+                  description: "是否使用SSL"
+                sslPort:
+                  type: "integer"
+                  description: "SSL端口"
+                valid:
+                  type: "boolean"
+                  description: "是否可用"
+                createTime:
+                  type: "string"
+                  description: "创建时间"
+              description: ""
+      responses:
+        "200":
+          description: "No Content"
+    delete:
+      summary: "delete"
+      description: "delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: ""
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "No Content"
+  /emailMgr/page:
+    get:
+      summary: "获取所有Email管理信息"
+      description: "获取所有Email管理信息"
+      parameters:
+      - name: "data.id"
+        in: "query"
+        description: "主键ID"
+        required: false
+        schema:
+          type: "integer"
+          format: "int64"
+          nullable: false
+      - name: "data.host"
+        in: "query"
+        description: "服务主机地址"
+        required: false
+        schema:
+          type: "string"
+          nullable: false
+      - name: "data.port"
+        in: "query"
+        description: "服务主机端口"
+        required: false
+        schema:
+          type: "integer"
+          nullable: false
+      - name: "data.address"
+        in: "query"
+        description: "邮箱地址"
+        required: false
+        schema:
+          type: "string"
+          nullable: false
+      - name: "data.password"
+        in: "query"
+        description: "邮箱密码"
+        required: false
+        schema:
+          type: "string"
+          nullable: false
+      - name: "data.protocol"
+        in: "query"
+        description: "邮箱协议\nsmtp :smtp协议\npop3 :pop3协议"
+        required: false
+        schema:
+          type: "string"
+          description: "[{value=smtp, name=smtp, description=smtp协议}, {value=pop3,\
+            \ name=pop3, description=pop3协议}]"
+          nullable: false
+          enum:
+          - "smtp"
+          - "pop3"
+      - name: "data.ssl"
+        in: "query"
+        description: "是否使用SSL"
+        required: false
+        schema:
+          type: "boolean"
+          nullable: false
+      - name: "data.sslPort"
+        in: "query"
+        description: "SSL端口"
+        required: false
+        schema:
+          type: "integer"
+          nullable: false
+      - name: "data.valid"
+        in: "query"
+        description: "是否可用"
+        required: false
+        schema:
+          type: "boolean"
+          nullable: false
+      - name: "data.createTime"
+        in: "query"
+        description: "创建时间"
+        required: false
+        schema:
+          type: "string"
+          nullable: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  pageSize:
+                    type: "integer"
+                    description: "每页数量"
+                    default: 10
+                  count:
+                    type: "integer"
+                    description: "总数"
+                    format: "int64"
+                  pageIndex:
+                    type: "integer"
+                    description: "当前页"
+                    default: 1
+                  totalPage:
+                    type: "integer"
+                    description: "总页数"
+                  data:
+                    type: "array"
+                    description: "数据"
+                    items:
+                      type: "object"
+                      properties:
+                        id:
+                          type: "integer"
+                          description: "主键ID"
+                          format: "int64"
+                        host:
+                          type: "string"
+                          description: "服务主机地址"
+                        port:
+                          type: "integer"
+                          description: "服务主机端口"
+                        address:
+                          type: "string"
+                          description: "邮箱地址"
+                        password:
+                          type: "string"
+                          description: "邮箱密码"
+                        protocol:
+                          type: "string"
+                          description: "{smtp=smtp协议, pop3=pop3协议}"
+                          enum:
+                          - "smtp"
+                          - "pop3"
+                        ssl:
+                          type: "boolean"
+                          description: "是否使用SSL"
+                        sslPort:
+                          type: "integer"
+                          description: "SSL端口"
+                        valid:
+                          type: "boolean"
+                          description: "是否可用"
+                        createTime:
+                          type: "string"
+                          description: "创建时间"
+                      description: "Email 邮箱服务配置表"
+                  orderby:
+                    type: "string"
+                    description: "排序字段"
+  /sms/send_mgr:
+    put:
+      summary: "更新短信发送通知"
+      description: "更新短信发送通知"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "content"
+              - "noticeType"
+              - "templateId"
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateId:
+                  type: "integer"
+                  description: "模板ID"
+                  format: "int64"
+                noticeType:
+                  type: "string"
+                  description: "消息类别"
+                range:
+                  type: "array"
+                  description: "发布范围"
+                  items:
+                    type: "string"
+                receiver:
+                  type: "string"
+                  description: "接收人"
+                content:
+                  type: "string"
+                  description: "消息内容"
+                createTime:
+                  type: "string"
+                  description: "创建/发布时间"
+                creatorId:
+                  type: "string"
+                  description: "创建人标识"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+                sendType:
+                  type: "string"
+                  description: "{immediate=即时消息, delayed=延时消息}"
+                  enum:
+                  - "immediate"
+                  - "delayed"
+                sendTime:
+                  type: "string"
+                  description: "定时发送时间"
+                finishTime:
+                  type: "string"
+                  description: "发送完成时间"
+                sendStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "sent"
+                  - "fail"
+                variables:
+                  type: "array"
+                  description: "自定义变量属性"
+                  items:
+                    type: "object"
+                    properties:
+                      name:
+                        type: "string"
+                        description: "变量名称"
+                      attribute:
+                        type: "string"
+                        description: "{numberCaptcha=仅数字, characterWithNumber2=数字\
+                          +字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                          户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                          牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                          他号码, link_param=链接参数, email_address=邮箱地址, others=其他（如名称、\
+                          账号、地址等）}"
+                        enum:
+                        - "numberCaptcha"
+                        - "characterWithNumber2"
+                        - "phone_number2"
+                        - "time"
+                        - "money"
+                        - "user_nick"
+                        - "name"
+                        - "unit_name"
+                        - "address"
+                        - "license_plate_number"
+                        - "tracking_number"
+                        - "pick_up_code"
+                        - "other_number2"
+                        - "link_param"
+                        - "email_address"
+                        - "others"
+                      value:
+                        type: "object"
+                        properties: {}
+                        description: "变量值"
+                    description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+              description: "短信发送通知"
+      responses:
+        "200":
+          description: "No Content"
+    post:
+      summary: "插入短信发送通知"
+      description: "插入短信发送通知"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "content"
+              - "noticeType"
+              - "templateId"
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateId:
+                  type: "integer"
+                  description: "模板ID"
+                  format: "int64"
+                noticeType:
+                  type: "string"
+                  description: "消息类别"
+                range:
+                  type: "array"
+                  description: "发布范围"
+                  items:
+                    type: "string"
+                receiver:
+                  type: "string"
+                  description: "接收人"
+                content:
+                  type: "string"
+                  description: "消息内容"
+                createTime:
+                  type: "string"
+                  description: "创建/发布时间"
+                creatorId:
+                  type: "string"
+                  description: "创建人标识"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+                sendType:
+                  type: "string"
+                  description: "{immediate=即时消息, delayed=延时消息}"
+                  enum:
+                  - "immediate"
+                  - "delayed"
+                sendTime:
+                  type: "string"
+                  description: "定时发送时间"
+                finishTime:
+                  type: "string"
+                  description: "发送完成时间"
+                sendStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "sent"
+                  - "fail"
+                variables:
+                  type: "array"
+                  description: "自定义变量属性"
+                  items:
+                    type: "object"
+                    properties:
+                      name:
+                        type: "string"
+                        description: "变量名称"
+                      attribute:
+                        type: "string"
+                        description: "{numberCaptcha=仅数字, characterWithNumber2=数字\
+                          +字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                          户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                          牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                          他号码, link_param=链接参数, email_address=邮箱地址, others=其他（如名称、\
+                          账号、地址等）}"
+                        enum:
+                        - "numberCaptcha"
+                        - "characterWithNumber2"
+                        - "phone_number2"
+                        - "time"
+                        - "money"
+                        - "user_nick"
+                        - "name"
+                        - "unit_name"
+                        - "address"
+                        - "license_plate_number"
+                        - "tracking_number"
+                        - "pick_up_code"
+                        - "other_number2"
+                        - "link_param"
+                        - "email_address"
+                        - "others"
+                      value:
+                        type: "object"
+                        properties: {}
+                        description: "变量值"
+                    description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+              description: "发送通知"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/send_mgr/draft:
+    put:
+      summary: "更新短信发送草稿"
+      description: "更新短信发送草稿"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "content"
+              - "noticeType"
+              - "templateId"
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateId:
+                  type: "integer"
+                  description: "模板ID"
+                  format: "int64"
+                noticeType:
+                  type: "string"
+                  description: "消息类别"
+                range:
+                  type: "array"
+                  description: "发布范围"
+                  items:
+                    type: "string"
+                receiver:
+                  type: "string"
+                  description: "接收人"
+                content:
+                  type: "string"
+                  description: "消息内容"
+                createTime:
+                  type: "string"
+                  description: "创建/发布时间"
+                creatorId:
+                  type: "string"
+                  description: "创建人标识"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+                sendType:
+                  type: "string"
+                  description: "{immediate=即时消息, delayed=延时消息}"
+                  enum:
+                  - "immediate"
+                  - "delayed"
+                sendTime:
+                  type: "string"
+                  description: "定时发送时间"
+                finishTime:
+                  type: "string"
+                  description: "发送完成时间"
+                sendStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "sent"
+                  - "fail"
+                variables:
+                  type: "array"
+                  description: "自定义变量属性"
+                  items:
+                    type: "object"
+                    properties:
+                      name:
+                        type: "string"
+                        description: "变量名称"
+                      attribute:
+                        type: "string"
+                        description: "{numberCaptcha=仅数字, characterWithNumber2=数字\
+                          +字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                          户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                          牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                          他号码, link_param=链接参数, email_address=邮箱地址, others=其他（如名称、\
+                          账号、地址等）}"
+                        enum:
+                        - "numberCaptcha"
+                        - "characterWithNumber2"
+                        - "phone_number2"
+                        - "time"
+                        - "money"
+                        - "user_nick"
+                        - "name"
+                        - "unit_name"
+                        - "address"
+                        - "license_plate_number"
+                        - "tracking_number"
+                        - "pick_up_code"
+                        - "other_number2"
+                        - "link_param"
+                        - "email_address"
+                        - "others"
+                      value:
+                        type: "object"
+                        properties: {}
+                        description: "变量值"
+                    description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+              description: "短信发送草稿"
+      responses:
+        "200":
+          description: "No Content"
+    post:
+      summary: "插入短信发送草稿"
+      description: "插入短信发送草稿"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "content"
+              - "noticeType"
+              - "templateId"
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateId:
+                  type: "integer"
+                  description: "模板ID"
+                  format: "int64"
+                noticeType:
+                  type: "string"
+                  description: "消息类别"
+                range:
+                  type: "array"
+                  description: "发布范围"
+                  items:
+                    type: "string"
+                receiver:
+                  type: "string"
+                  description: "接收人"
+                content:
+                  type: "string"
+                  description: "消息内容"
+                createTime:
+                  type: "string"
+                  description: "创建/发布时间"
+                creatorId:
+                  type: "string"
+                  description: "创建人标识"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+                sendType:
+                  type: "string"
+                  description: "{immediate=即时消息, delayed=延时消息}"
+                  enum:
+                  - "immediate"
+                  - "delayed"
+                sendTime:
+                  type: "string"
+                  description: "定时发送时间"
+                finishTime:
+                  type: "string"
+                  description: "发送完成时间"
+                sendStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "sent"
+                  - "fail"
+                variables:
+                  type: "array"
+                  description: "自定义变量属性"
+                  items:
+                    type: "object"
+                    properties:
+                      name:
+                        type: "string"
+                        description: "变量名称"
+                      attribute:
+                        type: "string"
+                        description: "{numberCaptcha=仅数字, characterWithNumber2=数字\
+                          +字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                          户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                          牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                          他号码, link_param=链接参数, email_address=邮箱地址, others=其他（如名称、\
+                          账号、地址等）}"
+                        enum:
+                        - "numberCaptcha"
+                        - "characterWithNumber2"
+                        - "phone_number2"
+                        - "time"
+                        - "money"
+                        - "user_nick"
+                        - "name"
+                        - "unit_name"
+                        - "address"
+                        - "license_plate_number"
+                        - "tracking_number"
+                        - "pick_up_code"
+                        - "other_number2"
+                        - "link_param"
+                        - "email_address"
+                        - "others"
+                      value:
+                        type: "object"
+                        properties: {}
+                        description: "变量值"
+                    description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+              description: "发送草稿"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/send_mgr/{id}:
+    get:
+      summary: "根据主键查询短信发送通知"
+      description: "根据主键查询短信发送通知"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "短信发送通知"
+          content:
+            application/json:
+              schema:
+                required:
+                - "content"
+                - "noticeType"
+                - "templateCode"
+                - "templateId"
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                    description: "主键ID"
+                    format: "int64"
+                  templateId:
+                    type: "integer"
+                    description: "模板ID"
+                    format: "int64"
+                  noticeType:
+                    type: "string"
+                    description: "消息类别"
+                  range:
+                    type: "array"
+                    description: "发布范围"
+                    items:
+                      type: "string"
+                  receiver:
+                    type: "string"
+                    description: "接收人"
+                  content:
+                    type: "string"
+                    description: "消息内容"
+                  createTime:
+                    type: "string"
+                    description: "创建/发布时间"
+                  creatorId:
+                    type: "string"
+                    description: "创建人标识"
+                  creatorName:
+                    type: "string"
+                    description: "创建人"
+                  sendType:
+                    type: "string"
+                    description: "{immediate=即时消息, delayed=延时消息}"
+                    enum:
+                    - "immediate"
+                    - "delayed"
+                  sendTime:
+                    type: "string"
+                    description: "定时发送时间"
+                  finishTime:
+                    type: "string"
+                    description: "发送完成时间"
+                  sendStatus:
+                    type: "string"
+                    description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                    enum:
+                    - "draft"
+                    - "pending"
+                    - "sent"
+                    - "fail"
+                  variables:
+                    type: "array"
+                    description: "自定义变量属性"
+                    items:
+                      type: "object"
+                      properties:
+                        name:
+                          type: "string"
+                          description: "变量名称"
+                        attribute:
+                          type: "string"
+                          description: "{numberCaptcha=仅数字, characterWithNumber2=数\
+                            字+字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                            户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                            牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                            他号码, link_param=链接参数, email_address=邮箱地址, others=其他（如名\
+                            称、账号、地址等）}"
+                          enum:
+                          - "numberCaptcha"
+                          - "characterWithNumber2"
+                          - "phone_number2"
+                          - "time"
+                          - "money"
+                          - "user_nick"
+                          - "name"
+                          - "unit_name"
+                          - "address"
+                          - "license_plate_number"
+                          - "tracking_number"
+                          - "pick_up_code"
+                          - "other_number2"
+                          - "link_param"
+                          - "email_address"
+                          - "others"
+                        value:
+                          type: "object"
+                          properties: {}
+                          description: "变量值"
+                      description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+                  templateCode:
+                    type: "string"
+                    description: "模板编码"
+                  templateName:
+                    type: "string"
+                    description: "模板名称"
+                  templateType:
+                    type: "string"
+                    description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                    enum:
+                    - "verifyCode"
+                    - "notice"
+                    - "promotion"
+                description: "短信发送通知"
+    delete:
+      summary: "删除短信发送通知"
+      description: "删除短信发送通知"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/send_mgr/page:
+    post:
+      summary: "分页查询短信发送通知"
+      description: "分页查询短信发送通知"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                createStartTime:
+                  type: "string"
+                  description: "开始时间"
+                creatEndTime:
+                  type: "string"
+                  description: "结束时间"
+                data:
+                  required:
+                  - "content"
+                  - "noticeType"
+                  - "templateId"
+                  type: "object"
+                  properties:
+                    id:
+                      type: "integer"
+                      description: "主键ID"
+                      format: "int64"
+                    templateId:
+                      type: "integer"
+                      description: "模板ID"
+                      format: "int64"
+                    noticeType:
+                      type: "string"
+                      description: "消息类别"
+                    range:
+                      type: "array"
+                      description: "发布范围"
+                      items:
+                        type: "string"
+                    receiver:
+                      type: "string"
+                      description: "接收人"
+                    content:
+                      type: "string"
+                      description: "消息内容"
+                    createTime:
+                      type: "string"
+                      description: "创建/发布时间"
+                    creatorId:
+                      type: "string"
+                      description: "创建人标识"
+                    creatorName:
+                      type: "string"
+                      description: "创建人"
+                    sendType:
+                      type: "string"
+                      description: "{immediate=即时消息, delayed=延时消息}"
+                      enum:
+                      - "immediate"
+                      - "delayed"
+                    sendTime:
+                      type: "string"
+                      description: "定时发送时间"
+                    finishTime:
+                      type: "string"
+                      description: "发送完成时间"
+                    sendStatus:
+                      type: "string"
+                      description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                      enum:
+                      - "draft"
+                      - "pending"
+                      - "sent"
+                      - "fail"
+                    variables:
+                      type: "array"
+                      description: "自定义变量属性"
+                      items:
+                        type: "object"
+                        properties:
+                          name:
+                            type: "string"
+                            description: "变量名称"
+                          attribute:
+                            type: "string"
+                            description: "{numberCaptcha=仅数字, characterWithNumber2=数\
+                              字+字母组合或仅字母, phone_number2=电话号码, time=时间, money=金额, user_nick=用\
+                              户昵称, name=个人姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车\
+                              牌号, tracking_number=快递单号, pick_up_code=取件码, other_number2=其\
+                              他号码, link_param=链接参数, email_address=邮箱地址, others=其他（\
+                              如名称、账号、地址等）}"
+                            enum:
+                            - "numberCaptcha"
+                            - "characterWithNumber2"
+                            - "phone_number2"
+                            - "time"
+                            - "money"
+                            - "user_nick"
+                            - "name"
+                            - "unit_name"
+                            - "address"
+                            - "license_plate_number"
+                            - "tracking_number"
+                            - "pick_up_code"
+                            - "other_number2"
+                            - "link_param"
+                            - "email_address"
+                            - "others"
+                          value:
+                            type: "object"
+                            properties: {}
+                            description: "变量值"
+                        description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+                  description: ""
+                  default: "new SmsSendManagerPo()"
+              description: "查询参数"
+      responses:
+        "200":
+          description: "短信发送通知"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  pageSize:
+                    type: "integer"
+                    description: "每页数量"
+                    default: 10
+                  count:
+                    type: "integer"
+                    description: "总数"
+                    format: "int64"
+                  pageIndex:
+                    type: "integer"
+                    description: "当前页"
+                    default: 1
+                  totalPage:
+                    type: "integer"
+                    description: "总页数"
+                  data:
+                    type: "array"
+                    description: "数据"
+                    items:
+                      required:
+                      - "content"
+                      - "noticeType"
+                      - "templateCode"
+                      - "templateId"
+                      type: "object"
+                      properties:
+                        id:
+                          type: "integer"
+                          description: "主键ID"
+                          format: "int64"
+                        templateId:
+                          type: "integer"
+                          description: "模板ID"
+                          format: "int64"
+                        noticeType:
+                          type: "string"
+                          description: "消息类别"
+                        range:
+                          type: "array"
+                          description: "发布范围"
+                          items:
+                            type: "string"
+                        receiver:
+                          type: "string"
+                          description: "接收人"
+                        content:
+                          type: "string"
+                          description: "消息内容"
+                        createTime:
+                          type: "string"
+                          description: "创建/发布时间"
+                        creatorId:
+                          type: "string"
+                          description: "创建人标识"
+                        creatorName:
+                          type: "string"
+                          description: "创建人"
+                        sendType:
+                          type: "string"
+                          description: "{immediate=即时消息, delayed=延时消息}"
+                          enum:
+                          - "immediate"
+                          - "delayed"
+                        sendTime:
+                          type: "string"
+                          description: "定时发送时间"
+                        finishTime:
+                          type: "string"
+                          description: "发送完成时间"
+                        sendStatus:
+                          type: "string"
+                          description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失\
+                            败}"
+                          enum:
+                          - "draft"
+                          - "pending"
+                          - "sent"
+                          - "fail"
+                        variables:
+                          type: "array"
+                          description: "自定义变量属性"
+                          items:
+                            type: "object"
+                            properties:
+                              name:
+                                type: "string"
+                                description: "变量名称"
+                              attribute:
+                                type: "string"
+                                description: "{numberCaptcha=仅数字, characterWithNumber2=数\
+                                  字+字母组合或仅字母, phone_number2=电话号码, time=时间, money=金\
+                                  额, user_nick=用户昵称, name=个人姓名, unit_name=企业/组织名称\
+                                  , address=地址, license_plate_number=车牌号, tracking_number=快\
+                                  递单号, pick_up_code=取件码, other_number2=其他号码, link_param=链\
+                                  接参数, email_address=邮箱地址, others=其他（如名称、账号、地址等）}"
+                                enum:
+                                - "numberCaptcha"
+                                - "characterWithNumber2"
+                                - "phone_number2"
+                                - "time"
+                                - "money"
+                                - "user_nick"
+                                - "name"
+                                - "unit_name"
+                                - "address"
+                                - "license_plate_number"
+                                - "tracking_number"
+                                - "pick_up_code"
+                                - "other_number2"
+                                - "link_param"
+                                - "email_address"
+                                - "others"
+                              value:
+                                type: "object"
+                                properties: {}
+                                description: "变量值"
+                            description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+                        templateCode:
+                          type: "string"
+                          description: "模板编码"
+                        templateName:
+                          type: "string"
+                          description: "模板名称"
+                        templateType:
+                          type: "string"
+                          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推\
+                            广短信}"
+                          enum:
+                          - "verifyCode"
+                          - "notice"
+                          - "promotion"
+                      description: "短信发送视图"
+                  orderby:
+                    type: "string"
+                    description: "排序字段"
+                description: "短信发送通知"
+  /sms/sign_mgr/page:
+    post:
+      summary: "分页查询短信签名管理"
+      description: "分页查询短信签名管理"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                data:
+                  type: "object"
+                  properties:
+                    signName:
+                      type: "string"
+                      description: "签名名称"
+                    orderId:
+                      type: "string"
+                      description: "工单号"
+                    createDate:
+                      type: "string"
+                      description: "创建时间"
+                    signStatus:
+                      type: "string"
+                      description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审\
+                        核失败, cancelled=取消审核}"
+                      enum:
+                      - "draft"
+                      - "pending"
+                      - "approved"
+                      - "rejected"
+                      - "cancelled"
+                  description: ""
+                  default: "new SmsSignManagerPo()"
+              description: "查询参数"
+      responses:
+        "200":
+          description: "短信签名管理"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  pageSize:
+                    type: "integer"
+                    description: "每页数量"
+                    default: 10
+                  count:
+                    type: "integer"
+                    description: "总数"
+                    format: "int64"
+                  pageIndex:
+                    type: "integer"
+                    description: "当前页"
+                    default: 1
+                  totalPage:
+                    type: "integer"
+                    description: "总页数"
+                  data:
+                    type: "array"
+                    description: "数据"
+                    items:
+                      type: "object"
+                      properties:
+                        signName:
+                          type: "string"
+                          description: "签名名称"
+                        orderId:
+                          type: "string"
+                          description: "工单号"
+                        createDate:
+                          type: "string"
+                          description: "创建时间"
+                        signStatus:
+                          type: "string"
+                          description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审\
+                            核失败, cancelled=取消审核}"
+                          enum:
+                          - "draft"
+                          - "pending"
+                          - "approved"
+                          - "rejected"
+                          - "cancelled"
+                      description: "短信签名管理表"
+                  orderby:
+                    type: "string"
+                    description: "排序字段"
+                description: "短信签名管理"
+  /sms/record_mgr/{id}:
+    get:
+      summary: "根据主键查询短信记录"
+      description: "根据主键查询短信记录"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "短信记录"
+          content:
+            application/json:
+              schema:
+                required:
+                - "content"
+                - "noticeType"
+                - "phone"
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                    description: "主键ID"
+                    format: "int64"
+                  bizId:
+                    type: "string"
+                    description: "回执ID"
+                  templateType:
+                    type: "string"
+                    description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                    enum:
+                    - "verifyCode"
+                    - "notice"
+                    - "promotion"
+                  noticeType:
+                    type: "string"
+                    description: "消息类别"
+                  sendType:
+                    type: "string"
+                    description: "{immediate=即时消息, delayed=延时消息}"
+                    enum:
+                    - "immediate"
+                    - "delayed"
+                  phone:
+                    type: "string"
+                    description: "电话号码"
+                  receiver:
+                    type: "string"
+                    description: "接收人"
+                  reason:
+                    type: "string"
+                    description: "失败原因"
+                  content:
+                    type: "string"
+                    description: "消息内容"
+                  sendStatus:
+                    type: "string"
+                    description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                    enum:
+                    - "draft"
+                    - "pending"
+                    - "sent"
+                    - "fail"
+                  createTime:
+                    type: "string"
+                    description: "创建时间"
+                  receiveDate:
+                    type: "string"
+                    description: "短信接收时间"
+                  sendDate:
+                    type: "string"
+                    description: "短信发送时间"
+                description: "短信记录"
+    delete:
+      summary: "删除短信记录"
+      description: "删除短信记录"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/record_mgr/page:
+    post:
+      summary: "分页查询短信记录"
+      description: "分页查询短信记录"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                createStartTime:
+                  type: "string"
+                  description: "创建开始时间"
+                creatEndTime:
+                  type: "string"
+                  description: "创建结束时间"
+                receiveStartDate:
+                  type: "string"
+                  description: "短信接收时间开始时间"
+                receiveEndDate:
+                  type: "string"
+                  description: "短信接收时间结束时间"
+                sendStartDate:
+                  type: "string"
+                  description: "短信发送开始时间"
+                sendEndDate:
+                  type: "string"
+                  description: "短信发送结束时间"
+                data:
+                  required:
+                  - "content"
+                  - "noticeType"
+                  - "phone"
+                  type: "object"
+                  properties:
+                    id:
+                      type: "integer"
+                      description: "主键ID"
+                      format: "int64"
+                    bizId:
+                      type: "string"
+                      description: "回执ID"
+                    templateType:
+                      type: "string"
+                      description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信\
+                        }"
+                      enum:
+                      - "verifyCode"
+                      - "notice"
+                      - "promotion"
+                    noticeType:
+                      type: "string"
+                      description: "消息类别"
+                    sendType:
+                      type: "string"
+                      description: "{immediate=即时消息, delayed=延时消息}"
+                      enum:
+                      - "immediate"
+                      - "delayed"
+                    phone:
+                      type: "string"
+                      description: "电话号码"
+                    receiver:
+                      type: "string"
+                      description: "接收人"
+                    reason:
+                      type: "string"
+                      description: "失败原因"
+                    content:
+                      type: "string"
+                      description: "消息内容"
+                    sendStatus:
+                      type: "string"
+                      description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+                      enum:
+                      - "draft"
+                      - "pending"
+                      - "sent"
+                      - "fail"
+                    createTime:
+                      type: "string"
+                      description: "创建时间"
+                    receiveDate:
+                      type: "string"
+                      description: "短信接收时间"
+                    sendDate:
+                      type: "string"
+                      description: "短信发送时间"
+                  description: ""
+                  default: "new SmsRecordManagerPo()"
+              description: "查询参数"
+      responses:
+        "200":
+          description: "短信记录"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  pageSize:
+                    type: "integer"
+                    description: "每页数量"
+                    default: 10
+                  count:
+                    type: "integer"
+                    description: "总数"
+                    format: "int64"
+                  pageIndex:
+                    type: "integer"
+                    description: "当前页"
+                    default: 1
+                  totalPage:
+                    type: "integer"
+                    description: "总页数"
+                  data:
+                    type: "array"
+                    description: "数据"
+                    items:
+                      required:
+                      - "content"
+                      - "noticeType"
+                      - "phone"
+                      type: "object"
+                      properties:
+                        id:
+                          type: "integer"
+                          description: "主键ID"
+                          format: "int64"
+                        bizId:
+                          type: "string"
+                          description: "回执ID"
+                        templateType:
+                          type: "string"
+                          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推\
+                            广短信}"
+                          enum:
+                          - "verifyCode"
+                          - "notice"
+                          - "promotion"
+                        noticeType:
+                          type: "string"
+                          description: "消息类别"
+                        sendType:
+                          type: "string"
+                          description: "{immediate=即时消息, delayed=延时消息}"
+                          enum:
+                          - "immediate"
+                          - "delayed"
+                        phone:
+                          type: "string"
+                          description: "电话号码"
+                        receiver:
+                          type: "string"
+                          description: "接收人"
+                        reason:
+                          type: "string"
+                          description: "失败原因"
+                        content:
+                          type: "string"
+                          description: "消息内容"
+                        sendStatus:
+                          type: "string"
+                          description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失\
+                            败}"
+                          enum:
+                          - "draft"
+                          - "pending"
+                          - "sent"
+                          - "fail"
+                        createTime:
+                          type: "string"
+                          description: "创建时间"
+                        receiveDate:
+                          type: "string"
+                          description: "短信接收时间"
+                        sendDate:
+                          type: "string"
+                          description: "短信发送时间"
+                      description: "短信记录管理表"
+                  orderby:
+                    type: "string"
+                    description: "排序字段"
+                description: "短信记录"
+  /sms/template_mgr:
+    put:
+      summary: "更新短信模板"
+      description: "更新短信模板"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateCode:
+                  type: "string"
+                  description: "模板编码"
+                orderId:
+                  type: "string"
+                  description: "工单号"
+                templateName:
+                  type: "string"
+                  description: "模板名称"
+                templateType:
+                  type: "string"
+                  description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                  enum:
+                  - "verifyCode"
+                  - "notice"
+                  - "promotion"
+                templateStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核\
+                    失败, cancelled=取消审核}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "approved"
+                  - "rejected"
+                  - "cancelled"
+                createDate:
+                  type: "string"
+                  description: "创建时间"
+                remark:
+                  type: "string"
+                  description: "模板描述"
+                relatedSignName:
+                  type: "string"
+                  description: "关联签名"
+                templateContent:
+                  type: "string"
+                  description: "模板内容"
+                rejectInfo:
+                  type: "string"
+                  description: "未通过审核原因"
+                variableAttribute:
+                  type: "object"
+                  properties: {}
+                  description: "模板变量规则"
+                  default: "new HashMap<>()"
+                creatorId:
+                  type: "string"
+                  description: "创建人ID"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+              description: "短信模板"
+      responses:
+        "200":
+          description: "No Content"
+    post:
+      summary: "插入短信模板"
+      description: "插入短信模板"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateCode:
+                  type: "string"
+                  description: "模板编码"
+                orderId:
+                  type: "string"
+                  description: "工单号"
+                templateName:
+                  type: "string"
+                  description: "模板名称"
+                templateType:
+                  type: "string"
+                  description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                  enum:
+                  - "verifyCode"
+                  - "notice"
+                  - "promotion"
+                templateStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核\
+                    失败, cancelled=取消审核}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "approved"
+                  - "rejected"
+                  - "cancelled"
+                createDate:
+                  type: "string"
+                  description: "创建时间"
+                remark:
+                  type: "string"
+                  description: "模板描述"
+                relatedSignName:
+                  type: "string"
+                  description: "关联签名"
+                templateContent:
+                  type: "string"
+                  description: "模板内容"
+                rejectInfo:
+                  type: "string"
+                  description: "未通过审核原因"
+                variableAttribute:
+                  type: "object"
+                  properties: {}
+                  description: "模板变量规则"
+                  default: "new HashMap<>()"
+                creatorId:
+                  type: "string"
+                  description: "创建人ID"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+              description: "短信模板"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/template_mgr/draft:
+    put:
+      summary: "更新短信草稿"
+      description: "更新短信草稿"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateCode:
+                  type: "string"
+                  description: "模板编码"
+                orderId:
+                  type: "string"
+                  description: "工单号"
+                templateName:
+                  type: "string"
+                  description: "模板名称"
+                templateType:
+                  type: "string"
+                  description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                  enum:
+                  - "verifyCode"
+                  - "notice"
+                  - "promotion"
+                templateStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核\
+                    失败, cancelled=取消审核}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "approved"
+                  - "rejected"
+                  - "cancelled"
+                createDate:
+                  type: "string"
+                  description: "创建时间"
+                remark:
+                  type: "string"
+                  description: "模板描述"
+                relatedSignName:
+                  type: "string"
+                  description: "关联签名"
+                templateContent:
+                  type: "string"
+                  description: "模板内容"
+                rejectInfo:
+                  type: "string"
+                  description: "未通过审核原因"
+                variableAttribute:
+                  type: "object"
+                  properties: {}
+                  description: "模板变量规则"
+                  default: "new HashMap<>()"
+                creatorId:
+                  type: "string"
+                  description: "创建人ID"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+              description: "短信模板草稿"
+      responses:
+        "200":
+          description: "No Content"
+    post:
+      summary: "插入短信模板草稿"
+      description: "插入短信模板草稿"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  description: "主键ID"
+                  format: "int64"
+                templateCode:
+                  type: "string"
+                  description: "模板编码"
+                orderId:
+                  type: "string"
+                  description: "工单号"
+                templateName:
+                  type: "string"
+                  description: "模板名称"
+                templateType:
+                  type: "string"
+                  description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                  enum:
+                  - "verifyCode"
+                  - "notice"
+                  - "promotion"
+                templateStatus:
+                  type: "string"
+                  description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核\
+                    失败, cancelled=取消审核}"
+                  enum:
+                  - "draft"
+                  - "pending"
+                  - "approved"
+                  - "rejected"
+                  - "cancelled"
+                createDate:
+                  type: "string"
+                  description: "创建时间"
+                remark:
+                  type: "string"
+                  description: "模板描述"
+                relatedSignName:
+                  type: "string"
+                  description: "关联签名"
+                templateContent:
+                  type: "string"
+                  description: "模板内容"
+                rejectInfo:
+                  type: "string"
+                  description: "未通过审核原因"
+                variableAttribute:
+                  type: "object"
+                  properties: {}
+                  description: "模板变量规则"
+                  default: "new HashMap<>()"
+                creatorId:
+                  type: "string"
+                  description: "创建人ID"
+                creatorName:
+                  type: "string"
+                  description: "创建人"
+              description: "短信模板草稿"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/template_mgr/{id}:
+    get:
+      summary: "根据主键查询短信模板"
+      description: "根据主键查询短信模板"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "短信模板管理"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                    description: "主键ID"
+                    format: "int64"
+                  templateCode:
+                    type: "string"
+                    description: "模板编码"
+                  orderId:
+                    type: "string"
+                    description: "工单号"
+                  templateName:
+                    type: "string"
+                    description: "模板名称"
+                  templateType:
+                    type: "string"
+                    description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+                    enum:
+                    - "verifyCode"
+                    - "notice"
+                    - "promotion"
+                  templateStatus:
+                    type: "string"
+                    description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审\
+                      核失败, cancelled=取消审核}"
+                    enum:
+                    - "draft"
+                    - "pending"
+                    - "approved"
+                    - "rejected"
+                    - "cancelled"
+                  createDate:
+                    type: "string"
+                    description: "创建时间"
+                  remark:
+                    type: "string"
+                    description: "模板描述"
+                  relatedSignName:
+                    type: "string"
+                    description: "关联签名"
+                  templateContent:
+                    type: "string"
+                    description: "模板内容"
+                  rejectInfo:
+                    type: "string"
+                    description: "未通过审核原因"
+                  variableAttribute:
+                    type: "object"
+                    properties: {}
+                    description: "模板变量规则"
+                    default: "new HashMap<>()"
+                  creatorId:
+                    type: "string"
+                    description: "创建人ID"
+                  creatorName:
+                    type: "string"
+                    description: "创建人"
+                description: "短信模板管理"
+    delete:
+      summary: "删除短信模板"
+      description: "删除短信模板"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "主键"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "No Content"
+  /sms/template_mgr/page:
+    post:
+      summary: "分页查询短信模板"
+      description: "分页查询短信模板"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                data:
+                  type: "object"
+                  properties:
+                    id:
+                      type: "integer"
+                      description: "主键ID"
+                      format: "int64"
+                    templateCode:
+                      type: "string"
+                      description: "模板编码"
+                    orderId:
+                      type: "string"
+                      description: "工单号"
+                    templateName:
+                      type: "string"
+                      description: "模板名称"
+                    templateType:
+                      type: "string"
+                      description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信\
+                        }"
+                      enum:
+                      - "verifyCode"
+                      - "notice"
+                      - "promotion"
+                    templateStatus:
+                      type: "string"
+                      description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审\
+                        核失败, cancelled=取消审核}"
+                      enum:
+                      - "draft"
+                      - "pending"
+                      - "approved"
+                      - "rejected"
+                      - "cancelled"
+                    createDate:
+                      type: "string"
+                      description: "创建时间"
+                    remark:
+                      type: "string"
+                      description: "模板描述"
+                    relatedSignName:
+                      type: "string"
+                      description: "关联签名"
+                    templateContent:
+                      type: "string"
+                      description: "模板内容"
+                    rejectInfo:
+                      type: "string"
+                      description: "未通过审核原因"
+                    variableAttribute:
+                      type: "object"
+                      properties: {}
+                      description: "模板变量规则"
+                      default: "new HashMap<>()"
+                    creatorId:
+                      type: "string"
+                      description: "创建人ID"
+                    creatorName:
+                      type: "string"
+                      description: "创建人"
+                  description: ""
+                  default: "new SmsTemplateManagerPo()"
+              description: "查询参数"
+      responses:
+        "200":
+          description: "短信模板管理"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  pageSize:
+                    type: "integer"
+                    description: "每页数量"
+                    default: 10
+                  count:
+                    type: "integer"
+                    description: "总数"
+                    format: "int64"
+                  pageIndex:
+                    type: "integer"
+                    description: "当前页"
+                    default: 1
+                  totalPage:
+                    type: "integer"
+                    description: "总页数"
+                  data:
+                    type: "array"
+                    description: "数据"
+                    items:
+                      type: "object"
+                      properties:
+                        id:
+                          type: "integer"
+                          description: "主键ID"
+                          format: "int64"
+                        templateCode:
+                          type: "string"
+                          description: "模板编码"
+                        orderId:
+                          type: "string"
+                          description: "工单号"
+                        templateName:
+                          type: "string"
+                          description: "模板名称"
+                        templateType:
+                          type: "string"
+                          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推\
+                            广短信}"
+                          enum:
+                          - "verifyCode"
+                          - "notice"
+                          - "promotion"
+                        templateStatus:
+                          type: "string"
+                          description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审\
+                            核失败, cancelled=取消审核}"
+                          enum:
+                          - "draft"
+                          - "pending"
+                          - "approved"
+                          - "rejected"
+                          - "cancelled"
+                        createDate:
+                          type: "string"
+                          description: "创建时间"
+                        remark:
+                          type: "string"
+                          description: "模板描述"
+                        relatedSignName:
+                          type: "string"
+                          description: "关联签名"
+                        templateContent:
+                          type: "string"
+                          description: "模板内容"
+                        rejectInfo:
+                          type: "string"
+                          description: "未通过审核原因"
+                        variableAttribute:
+                          type: "object"
+                          properties: {}
+                          description: "模板变量规则"
+                          default: "new HashMap<>()"
+                        creatorId:
+                          type: "string"
+                          description: "创建人ID"
+                        creatorName:
+                          type: "string"
+                          description: "创建人"
+                      description: "短信模板管理表"
+                  orderby:
+                    type: "string"
+                    description: "排序字段"
+                description: "短信模板管理"
+components:
+  schemas:
+    Email 邮箱服务配置表:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          description: "主键ID"
+          format: "int64"
+        host:
+          type: "string"
+          description: "服务主机地址"
+        port:
+          type: "integer"
+          description: "服务主机端口"
+        address:
+          type: "string"
+          description: "邮箱地址"
+        password:
+          type: "string"
+          description: "邮箱密码"
+        protocol:
+          type: "string"
+          description: "{smtp=smtp协议, pop3=pop3协议}"
+          enum:
+          - "smtp"
+          - "pop3"
+        ssl:
+          type: "boolean"
+          description: "是否使用SSL"
+        sslPort:
+          type: "integer"
+          description: "SSL端口"
+        valid:
+          type: "boolean"
+          description: "是否可用"
+        createTime:
+          type: "string"
+          description: "创建时间"
+      description: "Email 邮箱服务配置表"
+    java.io.Serializable:
+      type: "object"
+      properties: {}
+      description: "变量值"
+    com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "变量名称"
+        attribute:
+          type: "string"
+          description: "{numberCaptcha=仅数字, characterWithNumber2=数字+字母组合或仅字母, phone_number2=电\
+            话号码, time=时间, money=金额, user_nick=用户昵称, name=个人姓名, unit_name=企业/组织名称,\
+            \ address=地址, license_plate_number=车牌号, tracking_number=快递单号, pick_up_code=取\
+            件码, other_number2=其他号码, link_param=链接参数, email_address=邮箱地址, others=其他\
+            （如名称、账号、地址等）}"
+          enum:
+          - "numberCaptcha"
+          - "characterWithNumber2"
+          - "phone_number2"
+          - "time"
+          - "money"
+          - "user_nick"
+          - "name"
+          - "unit_name"
+          - "address"
+          - "license_plate_number"
+          - "tracking_number"
+          - "pick_up_code"
+          - "other_number2"
+          - "link_param"
+          - "email_address"
+          - "others"
+        value:
+          type: "object"
+          properties: {}
+          description: "变量值"
+      description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+    短信发送管理表:
+      required:
+      - "content"
+      - "noticeType"
+      - "templateId"
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          description: "主键ID"
+          format: "int64"
+        templateId:
+          type: "integer"
+          description: "模板ID"
+          format: "int64"
+        noticeType:
+          type: "string"
+          description: "消息类别"
+        range:
+          type: "array"
+          description: "发布范围"
+          items:
+            type: "string"
+        receiver:
+          type: "string"
+          description: "接收人"
+        content:
+          type: "string"
+          description: "消息内容"
+        createTime:
+          type: "string"
+          description: "创建/发布时间"
+        creatorId:
+          type: "string"
+          description: "创建人标识"
+        creatorName:
+          type: "string"
+          description: "创建人"
+        sendType:
+          type: "string"
+          description: "{immediate=即时消息, delayed=延时消息}"
+          enum:
+          - "immediate"
+          - "delayed"
+        sendTime:
+          type: "string"
+          description: "定时发送时间"
+        finishTime:
+          type: "string"
+          description: "发送完成时间"
+        sendStatus:
+          type: "string"
+          description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+          enum:
+          - "draft"
+          - "pending"
+          - "sent"
+          - "fail"
+        variables:
+          type: "array"
+          description: "自定义变量属性"
+          items:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                description: "变量名称"
+              attribute:
+                type: "string"
+                description: "{numberCaptcha=仅数字, characterWithNumber2=数字+字母组合或仅字母\
+                  , phone_number2=电话号码, time=时间, money=金额, user_nick=用户昵称, name=个人\
+                  姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车牌号, tracking_number=快\
+                  递单号, pick_up_code=取件码, other_number2=其他号码, link_param=链接参数, email_address=邮\
+                  箱地址, others=其他（如名称、账号、地址等）}"
+                enum:
+                - "numberCaptcha"
+                - "characterWithNumber2"
+                - "phone_number2"
+                - "time"
+                - "money"
+                - "user_nick"
+                - "name"
+                - "unit_name"
+                - "address"
+                - "license_plate_number"
+                - "tracking_number"
+                - "pick_up_code"
+                - "other_number2"
+                - "link_param"
+                - "email_address"
+                - "others"
+              value:
+                type: "object"
+                properties: {}
+                description: "变量值"
+            description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+      description: ""
+      default: "new SmsSendManagerPo()"
+    短信发送视图:
+      required:
+      - "content"
+      - "noticeType"
+      - "templateCode"
+      - "templateId"
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          description: "主键ID"
+          format: "int64"
+        templateId:
+          type: "integer"
+          description: "模板ID"
+          format: "int64"
+        noticeType:
+          type: "string"
+          description: "消息类别"
+        range:
+          type: "array"
+          description: "发布范围"
+          items:
+            type: "string"
+        receiver:
+          type: "string"
+          description: "接收人"
+        content:
+          type: "string"
+          description: "消息内容"
+        createTime:
+          type: "string"
+          description: "创建/发布时间"
+        creatorId:
+          type: "string"
+          description: "创建人标识"
+        creatorName:
+          type: "string"
+          description: "创建人"
+        sendType:
+          type: "string"
+          description: "{immediate=即时消息, delayed=延时消息}"
+          enum:
+          - "immediate"
+          - "delayed"
+        sendTime:
+          type: "string"
+          description: "定时发送时间"
+        finishTime:
+          type: "string"
+          description: "发送完成时间"
+        sendStatus:
+          type: "string"
+          description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+          enum:
+          - "draft"
+          - "pending"
+          - "sent"
+          - "fail"
+        variables:
+          type: "array"
+          description: "自定义变量属性"
+          items:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                description: "变量名称"
+              attribute:
+                type: "string"
+                description: "{numberCaptcha=仅数字, characterWithNumber2=数字+字母组合或仅字母\
+                  , phone_number2=电话号码, time=时间, money=金额, user_nick=用户昵称, name=个人\
+                  姓名, unit_name=企业/组织名称, address=地址, license_plate_number=车牌号, tracking_number=快\
+                  递单号, pick_up_code=取件码, other_number2=其他号码, link_param=链接参数, email_address=邮\
+                  箱地址, others=其他（如名称、账号、地址等）}"
+                enum:
+                - "numberCaptcha"
+                - "characterWithNumber2"
+                - "phone_number2"
+                - "time"
+                - "money"
+                - "user_nick"
+                - "name"
+                - "unit_name"
+                - "address"
+                - "license_plate_number"
+                - "tracking_number"
+                - "pick_up_code"
+                - "other_number2"
+                - "link_param"
+                - "email_address"
+                - "others"
+              value:
+                type: "object"
+                properties: {}
+                description: "变量值"
+            description: "com.zznode.typhoon.entity.domain.workbench.notice.SmsSendManagerPo.Variable"
+        templateCode:
+          type: "string"
+          description: "模板编码"
+        templateName:
+          type: "string"
+          description: "模板名称"
+        templateType:
+          type: "string"
+          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+          enum:
+          - "verifyCode"
+          - "notice"
+          - "promotion"
+      description: "短信发送视图"
+    短信签名管理表:
+      type: "object"
+      properties:
+        signName:
+          type: "string"
+          description: "签名名称"
+        orderId:
+          type: "string"
+          description: "工单号"
+        createDate:
+          type: "string"
+          description: "创建时间"
+        signStatus:
+          type: "string"
+          description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核失败, cancelled=取\
+            消审核}"
+          enum:
+          - "draft"
+          - "pending"
+          - "approved"
+          - "rejected"
+          - "cancelled"
+      description: "短信签名管理表"
+    短信记录管理表:
+      required:
+      - "content"
+      - "noticeType"
+      - "phone"
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          description: "主键ID"
+          format: "int64"
+        bizId:
+          type: "string"
+          description: "回执ID"
+        templateType:
+          type: "string"
+          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+          enum:
+          - "verifyCode"
+          - "notice"
+          - "promotion"
+        noticeType:
+          type: "string"
+          description: "消息类别"
+        sendType:
+          type: "string"
+          description: "{immediate=即时消息, delayed=延时消息}"
+          enum:
+          - "immediate"
+          - "delayed"
+        phone:
+          type: "string"
+          description: "电话号码"
+        receiver:
+          type: "string"
+          description: "接收人"
+        reason:
+          type: "string"
+          description: "失败原因"
+        content:
+          type: "string"
+          description: "消息内容"
+        sendStatus:
+          type: "string"
+          description: "{draft=草稿, pending=待发送, sent=已发送, fail=发送失败}"
+          enum:
+          - "draft"
+          - "pending"
+          - "sent"
+          - "fail"
+        createTime:
+          type: "string"
+          description: "创建时间"
+        receiveDate:
+          type: "string"
+          description: "短信接收时间"
+        sendDate:
+          type: "string"
+          description: "短信发送时间"
+      description: "短信记录管理表"
+    短信模板管理表:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          description: "主键ID"
+          format: "int64"
+        templateCode:
+          type: "string"
+          description: "模板编码"
+        orderId:
+          type: "string"
+          description: "工单号"
+        templateName:
+          type: "string"
+          description: "模板名称"
+        templateType:
+          type: "string"
+          description: "{verifyCode=验证码短信, notice=通知短信, promotion=推广短信}"
+          enum:
+          - "verifyCode"
+          - "notice"
+          - "promotion"
+        templateStatus:
+          type: "string"
+          description: "{draft=草稿, pending=审核中, approved=审核通过, rejected=审核失败, cancelled=取\
+            消审核}"
+          enum:
+          - "draft"
+          - "pending"
+          - "approved"
+          - "rejected"
+          - "cancelled"
+        createDate:
+          type: "string"
+          description: "创建时间"
+        remark:
+          type: "string"
+          description: "模板描述"
+        relatedSignName:
+          type: "string"
+          description: "关联签名"
+        templateContent:
+          type: "string"
+          description: "模板内容"
+        rejectInfo:
+          type: "string"
+          description: "未通过审核原因"
+        variableAttribute:
+          type: "object"
+          properties: {}
+          description: "模板变量规则"
+          default: "new HashMap<>()"
+        creatorId:
+          type: "string"
+          description: "创建人ID"
+        creatorName:
+          type: "string"
+          description: "创建人"
+      description: "短信模板管理表"
