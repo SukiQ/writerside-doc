@@ -28,3 +28,6 @@ env:
 
 4. 配置远程仓库
 5. 上传到git
+<img src="git-1.png"  thumbnail="false" width="600" alt="install-0"/>
+6. 创建GitHub Pages
+<img src="git-2.png"  thumbnail="false" width="600" alt="install-0"/>
