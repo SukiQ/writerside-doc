@@ -86,4 +86,20 @@
         <description>Created after removal of "file" from Writerside</description>
         <accepts>file.html</accepts>
     </rule>
+    <rule id="19e528f5">
+        <description>Created after removal of "测试页面" from Writerside</description>
+        <accepts>test.html</accepts>
+    </rule>
+    <rule id="5cece75b">
+        <description>Created after removal of "测试页面2" from Writerside</description>
+        <accepts>t2.html</accepts>
+    </rule>
+    <rule id="3a6ed905">
+        <description>Created after removal of "子页面" from Writerside</description>
+        <accepts>sub.html</accepts>
+    </rule>
+    <rule id="78dc30b2">
+        <description>Created after removal of "test" from Writerside</description>
+        <accepts>test.html</accepts>
+    </rule>
 </rules>

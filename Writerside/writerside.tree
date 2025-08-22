@@ -6,6 +6,7 @@
                   name="Writerside"
                   start-page="main.topic">
     <toc-element topic="main.topic"/>
+    <toc-element topic="nmc.md"/>
     <toc-element topic="process.md"/>
     <toc-element topic="introduction.md"/>
     <toc-element topic="install.md"/>
@@ -22,5 +23,6 @@
         <toc-element topic="git.md"/>
         <toc-element topic="locally.md"/>
         <toc-element topic="pdf.md"/>
+        <toc-element topic="test.md"/>
     </toc-element>
 </instance-profile>
