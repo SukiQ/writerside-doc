@@ -6,16 +6,17 @@
                   name="Writerside"
                   start-page="main.topic">
     <toc-element topic="main.topic"/>
+    <toc-element topic="process.md"/>
     <toc-element topic="introduction.md"/>
     <toc-element topic="install.md"/>
     <toc-element topic="grammar.md"/>
     <toc-element topic="api.md">
-        <toc-element topic="插入短信模板.topic"/>
-        <toc-element topic="更新短信草稿.topic"/>
-        <toc-element topic="插入短信模板草稿.topic"/>
-        <toc-element topic="根据主键查询短信模板.topic"/>
-        <toc-element topic="删除短信模板.topic"/>
-        <toc-element topic="分页查询短信模板.topic"/>
+        <toc-element topic="p4.topic"/>
+        <toc-element topic="p8.topic"/>
+        <toc-element topic="p5.topic"/>
+        <toc-element topic="p9.topic"/>
+        <toc-element topic="p2.topic"/>
+        <toc-element topic="p1.topic"/>
     </toc-element>
     <toc-element topic="export.md">
         <toc-element topic="git.md"/>

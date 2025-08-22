@@ -7,7 +7,7 @@
         <algolia-index>writerside</algolia-index>
         <algolia-api-key>96ddf6921d04d65365e6cfcfae3aacb2</algolia-api-key>
         <primary-color>#df2477</primary-color>
-        <header-logo>writerside.svg</header-logo>
+        <header-logo>writerside.png</header-logo>
         <custom-favicons>favicon.ico</custom-favicons>
     </variables>
     <build-profile instance="writerside">

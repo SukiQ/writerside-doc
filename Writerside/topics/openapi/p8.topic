@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="更新短信模板" id="更新短信模板">
+       title="更新短信草稿" id="p8" help-id="更新短信草稿">
 
-    <api-endpoint openapi-path="../../specifications/openapi.yaml" method="PUT" endpoint="/sms/template_mgr"/>
+    <api-endpoint openapi-path="../../specifications/openapi.yaml" method="PUT" endpoint="/sms/template_mgr/draft"/>
 </topic>

@@ -6,17 +6,23 @@
         <title>Writerside</title>
         <description>Writerside 技术指导文档</description>
         <spotlight>
+            <a href="process.md"
+               summary="介绍文档流程步骤及规划" type="branch"/>
             <a href="introduction.md"
                summary="介绍Writerside相关内容" type="start"/>
-            <a href="install.md"
-               summary="介绍Writerside的构建、安装方式" type="tools"/>
         </spotlight>
 
         <misc>
             <cards>
                 <title>使用</title>
+                <a href="install.md"
+                   summary="介绍Writerside的构建、安装方式" type="tools"/>
                 <a href="grammar.md"
                    summary="Writerside相关语法" type="development"/>
+                <a href="api.md"
+                   summary="演示接口" type="network"/>
+                <a href="export.md"
+                   summary="介绍输出方式，包括git发布、本地构建和PDF导出" type="location"/>
             </cards>
         </misc>
     </section-starting-page>
